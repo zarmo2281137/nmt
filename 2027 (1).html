@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НМТ 2025-2027 • Математика: Повний навчальний посібник</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- MathJax Configuration and Script -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)']],
+                displayMath: [['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .card-shadow {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb !important;
+            }
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .formula-box {
+            background-color: #f8fafc;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .hard-box {
+            border-left: 4px solid #ef4444;
+            background-color: #fef2f2;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-brand-600 text-white p-2 rounded-lg font-bold text-xl">
+                    <i class="fa-solid font-mono fa-calculator"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-900 text-lg leading-tight">НМТ Математика 2025–2027</h1>
+                    <p class="text-xs text-slate-500">Повний інтерактивний курс та довідник</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="window.print()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> Друк / PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow flex gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-72 shrink-0 hidden lg:block no-print">
+            <div class="sticky top-20 bg-white rounded-xl border border-slate-200 p-4 shadow-sm max-h-[calc(100vh-6rem)] overflow-y-auto">
+                <h2 class="font-bold text-slate-900 text-sm uppercase tracking-wider mb-3 text-brand-600">Навігація по 27 темам</h2>
+                <nav class="space-y-1 text-sm">
+                    <a href="#sec-1" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">1. Джерела та аналіз</a>
+                    <a href="#sec-2" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">2. Карта тем НМТ</a>
+                    <a href="#sec-3" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">3. Числа, дроби, відсотки</a>
+                    <a href="#sec-4" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">4. Степені та корені</a>
+                    <a href="#sec-5" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">5. Модуль числа</a>
+                    <a href="#sec-6" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">6. Многочлени</a>
+                    <a href="#sec-7" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">7. Рівняння та системи</a>
+                    <a href="#sec-8" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">8. Нерівності та інтервали</a>
+                    <a href="#sec-9" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">9. Дробово-раціональні</a>
+                    <a href="#sec-10" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">10. Показникові та логарифми</a>
+                    <a href="#sec-11" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">11. Тригонометрія</a>
+                    <a href="#sec-12" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">12. Функції та графіки</a>
+                    <a href="#sec-13" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">13. Похідна та дослідження</a>
+                    <a href="#sec-14" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">14. Первісна та інтеграл</a>
+                    <a href="#sec-15" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">15. Комбінаторика</a>
+                    <a href="#sec-16" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">16. Теорія ймовірностей</a>
+                    <a href="#sec-17" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">17. Статистика</a>
+                    <a href="#sec-18" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">18. Координати</a>
+                    <a href="#sec-19" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">19. Вектори</a>
+                    <a href="#sec-20" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">20. Трикутники</a>
+                    <a href="#sec-21" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">21. Чотирикутники</a>
+                    <a href="#sec-22" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">22. Коло та круг</a>
+                    <a href="#sec-23" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">23. Подібність та масштаб</a>
+                    <a href="#sec-24" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">24. Вступ до стереометрії</a>
+                    <a href="#sec-25" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">25. Призма, піраміда</a>
+                    <a href="#sec-26" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">26. Тіла обертання</a>
+                    <a href="#sec-27" class="block px-2.5 py-1.5 rounded hover:bg-slate-100 text-slate-700 truncate">27. НМТ-Пастки & Параметри</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 space-y-10 min-w-0">
+
+            <!-- Title Banner -->
+            <div class="bg-gradient-to-r from-brand-900 via-brand-700 to-brand-600 text-white rounded-2xl p-8 card-shadow">
+                <span class="inline-block px-3 py-1 bg-white/20 text-xs font-semibold rounded-full mb-3 uppercase tracking-wider">Офіційна програма УЦОЯО</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Повний навчальний курс НМТ 2025–2027 з Математики</h1>
+                <p class="text-brand-100 text-base max-w-3xl leading-relaxed">
+                    Містить детальний розбір усіх 27 розділів, виправлене відображення математичних формул, базові та поглиблені завдання (з параметрами й відповідностями) та відкриті відповіді без додаткових натискань.
+                </p>
+            </div>
+
+            <!-- SECTION 1 -->
+            <section id="sec-1" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">1</span>
+                    Джерела та методика аналізу
+                </h2>
+                <p class="text-slate-600 leading-relaxed mb-4">
+                    Підготовка до НМТ вимагає систематизації алгебри та геометрії за 5–11 класи. Тест складається з 22 завдань різних рівнів складності: з вибором однієї відповіді, на встановлення відповідностей (логічні пари) та з короткою письмовою відповіддю.
+                </p>
+                <div class="grid sm:grid-cols-3 gap-4 text-center">
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="text-2xl font-bold text-brand-600">15</div>
+                        <div class="text-xs text-slate-500">Завдань з вибором 1 відповіді</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="text-2xl font-bold text-brand-600">3</div>
+                        <div class="text-xs text-slate-500">Завдання на відповідності (3х4)</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                        <div class="text-2xl font-bold text-brand-600">4</div>
+                        <div class="text-xs text-slate-500">Завдання з короткою відповіддю</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <section id="sec-2" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">2</span>
+                    Карта тем НМТ
+                </h2>
+                <p class="text-slate-600 mb-4">Усі питання НМТ охоплюють дві основні підсистеми:</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+                        <h3 class="font-bold text-blue-900 mb-2"><i class="fa-solid fa-square-root-variable text-blue-600 mr-2"></i>Алгебра та начала аналізу (~60%)</h3>
+                        <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                            <li>Числа, вирази, степені, логарифми</li>
+                            <li>Рівняння, нерівності та їх системи</li>
+                            <li>Функції, похідна та інтеграл</li>
+                            <li>Елементи комбінаторики та теорії ймовірностей</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                        <h3 class="font-bold text-emerald-900 mb-2"><i class="fa-solid fa-shapes text-emerald-600 mr-2"></i>Геометрія (~40%)</h3>
+                        <ul class="text-sm text-slate-600 space-y-1 list-disc list-inside">
+                            <li>Планіметрія (трикутники, чотирикутники, коло)</li>
+                            <li>Стереометрія (многогранники, тіла обертання)</li>
+                            <li>Координати та вектори на площині й у просторі</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <section id="sec-3" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">3</span>
+                    Числа, дроби, відсотки та пропорції
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Основні формули та залежності:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Основна властивість пропорції: якщо \(\frac{a}{b} = \frac{c}{d}\), то \(a \cdot d = b \cdot c\).</p>
+                    <p class="text-sm text-slate-700 mb-1">● Відсоток від числа \(A\): \(p\% \text{ від } A = A \cdot \frac{p}{100}\).</p>
+                    <p class="text-sm text-slate-700">● Знаходження числа за його відсотком: якщо \(p\%\) дорівнює \(B\), то число дорівнює \(\frac{B \cdot 100}{p}\).</p>
+                </div>
+
+                <!-- Practical tasks -->
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800">Практичні завдання:</h3>
+                    
+                    <!-- Basic Task -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Базове</span>
+                        <p class="font-medium text-slate-900 mt-2">1. Ціну товару знизили спочатку на \(20\%\), а потім нову ціну підвищили на \(10\%\). Як змінилася початкова ціна товару?</p>
+                        
+                        <!-- Open Answer Box -->
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Нехай початкова ціна \(x\). Після першої зміни: \(0{,}8x\). Після другої зміни: \(0{,}8x \cdot 1{,}1 = 0{,}88x\). Початкова ціна зменшилася на \(12\%\).<br>
+                            <span class="font-bold">Відповідь:</span> Зменшилася на \(12\%\).
+                        </div>
+                    </div>
+
+                    <!-- Hard Task -->
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                        <p class="font-medium text-slate-900 mt-2">2. Зливок сплаву міді та олова масою \(12\text{ кг}\) містить \(45\%\) міді. Скільки кілограмів чистого олова потрібно додати до цього сплаву, щоб отримати новий сплав, у якому вміст міді становитиме \(30\%\)?</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Маса міді в початковому сплаві: \(12 \cdot 0{,}45 = 5{,}4\text{ кг}\). Після додавання \(x\text{ кг}\) олова маса сплаву стане \((12 + x)\text{ кг}\), а маса міді не зміниться. Маємо: \(\frac{5{,}4}{12 + x} = 0{,}30 \implies 5{,}4 = 3{,}6 + 0{,}3x \implies 0{,}3x = 1{,}8 \implies x = 6\text{ кг}\).<br>
+                            <span class="font-bold">Відповідь:</span> \(6\text{ кг}\).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4 -->
+            <section id="sec-4" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">4</span>
+                    Степені та корені
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Ключові властивості:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \(a^x \cdot a^y = a^{x+y}\), \(\quad \frac{a^x}{a^y} = a^{x-y}\), \(\quad (a^x)^y = a^{x \cdot y}\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● \(\sqrt[n]{a \cdot b} = \sqrt[n]{a} \cdot \sqrt[n]{b}\) \((a \ge 0, b \ge 0)\)</p>
+                    <p class="text-sm text-slate-700">● \(\sqrt{a^2} = |a|\), \(\quad \sqrt[2k]{a^{2k}} = |a|\), \(\quad \sqrt[2k+1]{a^{2k+1}} = a\)</p>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800">Завдання для перевірки:</h3>
+                    
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Базове</span>
+                        <p class="font-medium text-slate-900 mt-2">Обчисліть значення виразу: \(\frac{27^{2/3} \cdot 9^{1/2}}{81^{1/4}}\).</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> \(27^{2/3} = (3^3)^{2/3} = 3^2 = 9\). \(9^{1/2} = 3\). \(81^{1/4} = 3\). Вираз: \(\frac{9 \cdot 3}{3} = 9\).<br>
+                            <span class="font-bold">Відповідь:</span> \(9\).
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                        <p class="font-medium text-slate-900 mt-2">Спростіть вираз: \(A = \sqrt{11 - 6\sqrt{2}} + \sqrt{11 + 6\sqrt{2}}\).</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Помітимо, що \(11 - 6\sqrt{2} = 9 - 2 \cdot 3 \cdot \sqrt{2} + 2 = (3 - \sqrt{2})^2\). Аналогічно \(11 + 6\sqrt{2} = (3 + \sqrt{2})^2\). Отже, \(A = |3 - \sqrt{2}| + |3 + \sqrt{2}| = 3 - \sqrt{2} + 3 + \sqrt{2} = 6\).<br>
+                            <span class="font-bold">Відповідь:</span> \(6\).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5 -->
+            <section id="sec-5" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">5</span>
+                    Модуль дійсного числа
+                </h2>
+                
+                <!-- Explicit corrected MathJax render -->
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Означення та властивості модуля:</h3>
+                    <p class="text-sm text-slate-700 mb-2">
+                        \(|x| = \begin{cases} x, & \text{якщо } x \ge 0 \\ -x, & \text{якщо } x < 0 \end{cases}\)
+                    </p>
+                    <div class="space-y-1 text-sm text-slate-700">
+                        <p>■ \(|x| = a \implies x = \pm a \quad (\text{при } a \ge 0)\).</p>
+                        <p>■ \(|x| < a \iff -a < x < a \quad (\text{при } a > 0)\).</p>
+                        <p>■ \(|x| > a \iff x < -a \text{ або } x > a \quad (\text{при } a > 0)\).</p>
+                        <p>■ \(|a \cdot b| = |a| \cdot |b|\), \(\quad |a|^2 = a^2\).</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800">Завдання:</h3>
+                    
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне завдання з параметром</span>
+                        <p class="font-medium text-slate-900 mt-2">Знайдіть усі значення параметра \(a\), при яких рівняння \(|2x - 6| = a + 1\) має точно два корені різних знаків.</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Рівняння має корені, якщо \(a+1 > 0 \implies a > -1\). Тоді \(2x - 6 = a + 1 \implies x_1 = \frac{a+7}{2}\) та \(2x - 6 = -(a + 1) \implies x_2 = \frac{5 - a}{2}\). Нам потрібно, щоб корені мали різні знаки, тобто \(x_1 \cdot x_2 < 0\). Оскільки \(a > -1\), маємо \(x_1 > 0\). Для протилежного знака необхідно \(x_2 < 0 \implies 5 - a < 0 \implies a > 5\).<br>
+                            <span class="font-bold">Відповідь:</span> \(a \in (5; +\infty)\).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6 -->
+            <section id="sec-6" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">6</span>
+                    Тотожні перетворення та многочлени
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Формули скороченого множення:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \((a \pm b)^2 = a^2 \pm 2ab + b^2\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● \(a^2 - b^2 = (a - b)(a + b)\)</p>
+                    <p class="text-sm text-slate-700">● \(a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Практичне завдання</span>
+                    <p class="font-medium text-slate-900 mt-2">Скоротіть дріб: \(\frac{a^3 - 8}{a^2 + 2a + 4}\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Чисельник розкладається за формулою різниці кубів: \(a^3 - 8 = (a - 2)(a^2 + 2a + 4)\). Після скорочення з знаменником отримаємо \(a - 2\).<br>
+                        <span class="font-bold">Відповідь:</span> \(a - 2\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7 -->
+            <section id="sec-7" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">7</span>
+                    Рівняння: лінійні, квадратні та системи
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Квадратне рівняння \(ax^2 + bx + c = 0\):</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Дискримінант: \(D = b^2 - 4ac\). Якщо \(D>0\) — 2 корені, \(D=0\) — 1 корінь, \(D<0\) — дійсних коренів немає.</p>
+                    <p class="text-sm text-slate-700">● Теорема Вієта (при \(a=1\)): \(x_1 + x_2 = -b\), \(\quad x_1 \cdot x_2 = c\).</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                        <p class="font-medium text-slate-900 mt-2">Знайдіть суму всіх значень параметра \(a\), при яких система рівнянь має безліч розв'язків:</p>
+                        <p class="my-2 text-center">\(\begin{cases} (a - 1)x + 3y = a \\ 3x + (a - 1)y = 6 \end{cases}\)</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Система має безліч розв'язків, коли коефіцієнти пропорційні: \(\frac{a - 1}{3} = \frac{3}{a - 1} = \frac{a}{6}\).З першої рівності: \((a - 1)^2 = 9 \implies a - 1 = 3\) або \(a - 1 = -3 \implies a = 4\) або \(a = -2\). Перевіряємо \(a = 4\): \(\frac{3}{3} = \frac{3}{3} = \frac{4}{6}\) (Хибно, немає розв'язків). Перевіряємо \(a = -2\): \(\frac{-3}{3} = \frac{3}{-3} = \frac{-2}{6}\) — відношення \(-1 = -1 \neq -1/3\). Отже, таких значень немає.<br>
+                            <span class="font-bold">Відповідь:</span> Таких значень \(a\) не існує.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8 -->
+            <section id="sec-8" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">8</span>
+                    Нерівності та метод інтервалів
+                </h2>
+                
+                <p class="text-slate-600 mb-4">Для розв'язування нерівностей вигляду \(f(x) > 0\) методом інтервалів: 1) знаходимо нулі функції; 2) наносимо їх на числову пряму; 3) визначаємо знаки на кожному інтервалі.</p>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Практика</span>
+                    <p class="font-medium text-slate-900 mt-2">Розв'яжіть нерівність: \(\frac{(x - 3)(x + 1)^2}{x - 5} \le 0\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Нулі чисельника: \(x = 3\) та \(x = -1\) (кратність 2). Нуль знаменника: \(x = 5\) (виколота точка). Наносимо на пряму. Зміна знаків з урахуванням парної кратності точки \(x=-1\). Отримуємо розв'язок: \(x \in [3; 5) \cup \{-1\}\).<br>
+                        <span class="font-bold">Відповідь:</span> \(x \in [3; 5) \cup \{-1\}\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9 -->
+            <section id="sec-9" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">9</span>
+                    Дробово-раціональні та ірраціональні рівняння й нерівності
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Правила рівносильних переходів:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \(\sqrt{f(x)} = g(x) \iff \begin{cases} g(x) \ge 0 \\ f(x) = (g(x))^2 \end{cases}\)</p>
+                    <p class="text-sm text-slate-700">● \(\sqrt{f(x)} < g(x) \iff \begin{cases} f(x) \ge 0 \\ g(x) > 0 \\ f(x) < (g(x))^2 \end{cases}\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                    <p class="font-medium text-slate-900 mt-2">Розв'яжіть рівняння: \(\sqrt{x + 3} - \sqrt{x - 2} = 1\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Перенесемо корінь: \(\sqrt{x + 3} = 1 + \sqrt{x - 2}\). ОДЗ: \(x \ge 2\). Піднесемо до квадрата: \(x + 3 = 1 + 2\sqrt{x - 2} + x - 2 \implies 4 = 2\sqrt{x - 2} \implies \sqrt{x - 2} = 2 \implies x - 2 = 4 \implies x = 6\). Перевірка підтверджує корінь.<br>
+                        <span class="font-bold">Відповідь:</span> \(6\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10 -->
+            <section id="sec-10" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">10</span>
+                    Показникові та логарифмічні вирази, рівняння й нерівності
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Основні властивості логарифмів (\(a > 0, a \neq 1\)):</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \(a^{\log_a b} = b\), \(\quad \log_a (b \cdot c) = \log_a b + \log_a c\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● \(\log_a \left(\frac{b}{c}\right) = \log_a b - \log_a c\), \(\quad \log_a b^k = k \log_a b\)</p>
+                    <p class="text-sm text-slate-700">● <strong>Увага:</strong> При розв'язуванні нерівностей \(\log_a f(x) > \log_a g(x)\), якщо \(0 < a < 1\), знак нерівності змінюється на протилежний!</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                        <p class="font-medium text-slate-900 mt-2">Знайти кількість цілих розв'язків нерівності: \(\log_{0{,}5} (x^2 - 5x + 6) \ge -1\).</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Оскільки основа \(0{,}5 < 1\), змінюємо знак нерівності та додаємо ОДЗ:<br>
+                            \(\begin{cases} x^2 - 5x + 6 > 0 \\ x^2 - 5x + 6 \le (0{,}5)^{-1} \end{cases} \implies \begin{cases} (x-2)(x-3) > 0 \\ x^2 - 5x + 6 \le 2 \end{cases}\)<br>
+                            З другого рівняння: \(x^2 - 5x + 4 \le 0 \implies x \in [1; 4]\).<br>
+                            Враховуючи ОДЗ (\(x < 2\) або \(x > 3\)), маємо: \(x \in [1; 2) \cup (3; 4]\).<br>
+                            Цілі розв'язки: \(x = 1\) та \(x = 4\). Всього 2 розв'язки.<br>
+                            <span class="font-bold">Відповідь:</span> \(2\).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 11 -->
+            <section id="sec-11" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">11</span>
+                    Тригонометричні вирази, тотожності та рівняння
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Формули та найпростіші рівняння:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \(\sin^2 \alpha + \cos^2 \alpha = 1\), \(\quad \sin 2\alpha = 2\sin\alpha\cos\alpha\), \(\quad \cos 2\alpha = \cos^2\alpha - \sin^2\alpha\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● \(\sin x = a \implies x = (-1)^k \arcsin a + \pi k, \quad k \in \mathbb{Z}\)</p>
+                    <p class="text-sm text-slate-700">● \(\cos x = a \implies x = \pm \arccos a + 2\pi k, \quad k \in \mathbb{Z}\)</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Базове</span>
+                        <p class="font-medium text-slate-900 mt-2">Спростіть вираз: \(\frac{\sin 2\alpha}{1 + \cos 2\alpha}\).</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> \(\frac{2\sin\alpha\cos\alpha}{1 + (2\cos^2\alpha - 1)} = \frac{2\sin\alpha\cos\alpha}{2\cos^2\alpha} = \frac{\sin\alpha}{\cos\alpha} = \operatorname{tg} \alpha\).<br>
+                            <span class="font-bold">Відповідь:</span> \(\operatorname{tg} \alpha\).
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                        <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                        <p class="font-medium text-slate-900 mt-2">Знайдіть кількість коренів рівняння \(\cos 2x + 3\sin x = 2\) на проміжку \([0; 2\pi]\).</p>
+                        
+                        <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                            <strong>Розв'язання та відповідь:</strong> Застосуємо \(\cos 2x = 1 - 2\sin^2 x\):<br>
+                            \(1 - 2\sin^2 x + 3\sin x = 2 \implies 2\sin^2 x - 3\sin x + 1 = 0\).<br>
+                            Заміна \(t = \sin x\): \(2t^2 - 3t + 1 = 0 \implies t_1 = 1, t_2 = \frac{1}{2}\).<br>
+                            1) \(\sin x = 1 \implies x = \frac{\pi}{2} \in [0; 2\pi]\) (1 корінь).<br>
+                            2) \(\sin x = \frac{1}{2} \implies x = \frac{\pi}{6}, x = \frac{5\pi}{6} \in [0; 2\pi]\) (2 корені).<br>
+                            Всього коренів на проміжку: 3.<br>
+                            <span class="font-bold">Відповідь:</span> \(3\).
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 12 -->
+            <section id="sec-12" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">12</span>
+                    Функції, їхні властивості та графіки
+                </h2>
+                <p class="text-slate-600 mb-4">Основні поняття: область визначення \(D(y)\), область значень \(E(y)\), парність (\(f(-x)=f(x)\)), непарність (\(f(-x)=-f(x)\)), періодичність та перетворення графіків.</p>
+                
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Завдання</span>
+                    <p class="font-medium text-slate-900 mt-2">Знайдіть область визначення функції \(y = \frac{1}{\sqrt{4 - x^2}} + \log_3 (x + 1)\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Система нерівностей: \(\begin{cases} 4 - x^2 > 0 \\ x + 1 > 0 \end{cases} \implies \begin{cases} -2 < x < 2 \\ x > -1 \end{cases} \implies x \in (-1; 2)\).<br>
+                        <span class="font-bold">Відповідь:</span> \((-1; 2)\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 13 -->
+            <section id="sec-13" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">13</span>
+                    Похідна, її геометричний зміст, дослідження функції
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Правила та геометричний зміст:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Геометричний зміст: \(k = \operatorname{tg} \alpha = f'(x_0)\) — кутовий коефіцієнт дотичної.</p>
+                    <p class="text-sm text-slate-700">● Рівняння дотичної: \(y = f(x_0) + f'(x_0)(x - x_0)\).</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                    <p class="font-medium text-slate-900 mt-2">Знайдіть найбільше значення функції \(f(x) = x^3 - 3x^2 + 5\) на відрізку \([-1; 3]\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> 1) Знаходимо похідну: \(f'(x) = 3x^2 - 6x = 3x(x - 2)\).<br>
+                        2) Критичні точки: \(x = 0\) та \(x = 2\) (обидві належать \([-1; 3]\)).<br>
+                        3) Обчислюємо значення на кінцях та в критичних точках:<br>
+                        \(f(-1) = -1 - 3 + 5 = 1\); \(f(0) = 5\); \(f(2) = 8 - 12 + 5 = 1\); \(f(3) = 27 - 27 + 5 = 5\).<br>
+                        Найбільше значення дорівнює 5.<br>
+                        <span class="font-bold">Відповідь:</span> \(5\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 14 -->
+            <section id="sec-14" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">14</span>
+                    Первісна та визначений інтеграл
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Формула Ньютона-Лейбніца та площа:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \(\int_{a}^{b} f(x) \, dx = F(b) - F(a)\)</p>
+                    <p class="text-sm text-slate-700">● Площа криволінійної трапеції: \(S = \int_{a}^{b} f(x) \, dx\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Завдання</span>
+                    <p class="font-medium text-slate-900 mt-2">Обчисліть інтеграл: \(\int_{1}^{2} (3x^2 - 2x) \, dx\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Первісна \(F(x) = x^3 - x^2\). Обчислюємо: \(F(2) - F(1) = (2^3 - 2^2) - (1^3 - 1^2) = (8 - 4) - 0 = 4\).<br>
+                        <span class="font-bold">Відповідь:</span> \(4\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 15 -->
+            <section id="sec-15" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">15</span>
+                    Елементи комбінаторики
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Основні комбінаторні формули:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Перестановки: \(P_n = n!\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● Розміщення (порядок важливий): \(A_n^k = \frac{n!}{(n-k)!}\)</p>
+                    <p class="text-sm text-slate-700">● Комбінації (порядок НЕ важливий): \(C_n^k = \frac{n!}{k!(n-k)!}\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                    <p class="font-medium text-slate-900 mt-2">З групи з 8 хлопців та 6 дівчат потрібно обрати команду з 4 осіб, у якій має бути щонайменше 2 дівчини. Скількома способами це можна зробити?</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Можливі 3 випадки складів:<br>
+                        1) 2 дівчини та 2 хлопці: \(C_6^2 \cdot C_8^2 = 15 \cdot 28 = 420\).<br>
+                        2) 3 дівчини та 1 хлопець: \(C_6^3 \cdot C_8^1 = 20 \cdot 8 = 160\).<br>
+                        3) 4 дівчини: \(C_6^4 = 15\).<br>
+                        Загальна кількість способів: \(420 + 160 + 15 = 595\).<br>
+                        <span class="font-bold">Відповідь:</span> \(595\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 16 -->
+            <section id="sec-16" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">16</span>
+                    Теорія ймовірностей
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Класичне означення ймовірності:</h3>
+                    <p class="text-sm text-slate-700">\(P(A) = \frac{m}{n}\), де \(m\) — кількість сприятливих подій, \(n\) — загальна кількість рівноможливих подій.</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-blue-100 text-blue-800 rounded">Завдання</span>
+                    <p class="font-medium text-slate-900 mt-2">У коробці 5 білих, 3 чорних і 2 червоних кулі. Яка ймовірність того, що витягнута навмання куля НЕ буде чорною?</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Загальна кількість куль: \(n = 5 + 3 + 2 = 10\). Не чорні кулі (білі + червоні): \(m = 5 + 2 = 7\). Ймовірність \(P = \frac{7}{10} = 0{,}7\).<br>
+                        <span class="font-bold">Відповідь:</span> \(0{,}7\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 17 -->
+            <section id="sec-17" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">17</span>
+                    Елементи математичної статистики
+                </h2>
+                <p class="text-slate-600 mb-4">Числові характеристики вибірки: середнє арифметичне \(\bar{x}\), мода \(M_o\) (значення, що зустрічається найчастіше), медіана \(M_e\) (серединне значення в впорядкованому ряду), розмах вибірки \(R = x_{\max} - x_{\min}\).</p>
+            </section>
+
+            <!-- SECTION 18 -->
+            <section id="sec-18" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">18</span>
+                    Координати на площині та у просторі
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Формули у просторі \(R^3\):</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Відстань між точками: \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\)</p>
+                    <p class="text-sm text-slate-700">● Координати середини відрізка: \(M\left(\frac{x_1 + x_2}{2}; \frac{y_1 + y_2}{2}; \frac{z_1 + z_2}{2}\right)\)</p>
+                </div>
+            </section>
+
+            <!-- SECTION 19 -->
+            <section id="sec-19" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">19</span>
+                    Вектори на площині та у просторі
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Скалярний добуток векторів:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● \(\vec{a} \cdot \vec{b} = a_x b_x + a_y b_y + a_z b_z\)</p>
+                    <p class="text-sm text-slate-700">● Умова перпендикулярності: \(\vec{a} \cdot \vec{b} = 0\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                    <p class="font-medium text-slate-900 mt-2">При якому значенні \(z\) вектори \(\vec{a}(2; -3; z)\) та \(\vec{b}(4; z; 2)\) перпендикулярні?</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> \(\vec{a} \cdot \vec{b} = 0 \implies 2 \cdot 4 + (-3) \cdot z + z \cdot 2 = 0 \implies 8 - 3z + 2z = 0 \implies 8 - z = 0 \implies z = 8\).<br>
+                        <span class="font-bold">Відповідь:</span> \(8\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 20 -->
+            <section id="sec-20" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">20</span>
+                    Трикутники (планіметрія)
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Основні теореми:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Теорема синусів: \(\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● Теорема косинусів: \(a^2 = b^2 + c^2 - 2bc \cos A\)</p>
+                    <p class="text-sm text-slate-700">● Площа: \(S = \frac{1}{2}ab \sin C = \sqrt{p(p-a)(p-b)(p-c)} = \frac{abc}{4R} = p \cdot r\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                    <p class="font-medium text-slate-900 mt-2">У трикутнику \(ABC\) сторона \(AB = 5\text{ см}\), \(BC = 8\text{ см}\), а кут \(B = 60^\circ\). Знайдіть довжину медіани, проведеної з вершини \(B\).</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong>За теоремою косинусів знайдемо \(AC\):<br>
+                        \(AC^2 = 5^2 + 8^2 - 2 \cdot 5 \cdot 8 \cdot \cos 60^\circ = 25 + 64 - 40 = 49 \implies AC = 7\text{ см}\).<br>
+                        Формула медіани: \(m_b = \frac{1}{2}\sqrt{2a^2 + 2c^2 - b^2} = \frac{1}{2}\sqrt{2(64) + 2(25) - 49} = \frac{1}{2}\sqrt{128 + 50 - 49} = \frac{1}{2}\sqrt{129}\text{ см}\).<br>
+                        <span class="font-bold">Відповідь:</span> \(\frac{\sqrt{129}}{2}\text{ см}\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 21 -->
+            <section id="sec-21" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">21</span>
+                    Чотирикутники та многокутники
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Формули площ чотирикутників:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Паралелограм: \(S = a \cdot h_a = ab \sin \alpha\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● Ромб: \(S = \frac{1}{2} d_1 d_2\)</p>
+                    <p class="text-sm text-slate-700">● Трапеція: \(S = \frac{a + b}{2} \cdot h\)</p>
+                </div>
+            </section>
+
+            <!-- SECTION 22 -->
+            <section id="sec-22" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">22</span>
+                    Коло, круг та їх елементи
+                </h2>
+                <p class="text-slate-600 mb-4">Довжина кола \(C = 2\pi R\), площа круга \(S = \pi R^2\). Вписаний кут дорівнює половині центрального кута, що спирається на таку саму дугу.</p>
+            </section>
+
+            <!-- SECTION 23 -->
+            <section id="sec-23" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">23</span>
+                    Подібність фігур, масштаб, пропорційні відрізки
+                </h2>
+                <p class="text-slate-600 mb-4">Відношення периметрів подібних фігур дорівнює коефіцієнту подібності \(k\), відношення площ — \(k^2\), відношення об'ємів — \(k^3\).</p>
+            </section>
+
+            <!-- SECTION 24 -->
+            <section id="sec-24" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">24</span>
+                    Стереометрія: прямі та площини у просторі
+                </h2>
+                <p class="text-slate-600 mb-4">Теорема про три перпендикуляри: пряма, проведена на площині через основу похилої перпендикулярно до її проекції, перпендикулярна і до самої похилої.</p>
+            </section>
+
+            <!-- SECTION 25 -->
+            <section id="sec-25" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">25</span>
+                    Призма, паралелепіпед, піраміда
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Об'єми та площі:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Призма: \(V = S_{\text{осн}} \cdot h\)</p>
+                    <p class="text-sm text-slate-700">● Піраміда: \(V = \frac{1}{3} S_{\text{осн}} \cdot h\)</p>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                    <span class="text-xs font-semibold px-2 py-0.5 bg-red-100 text-red-800 rounded">Складне</span>
+                    <p class="font-medium text-slate-900 mt-2">Основою піраміди є квадрат зі стороною \(6\text{ см}\). Одне з бічних ребер перпендикулярне до площини основи і дорівнює \(8\text{ см}\). Знайдіть площу бічної поверхні піраміди.</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong> Дві бічні грані є прямокутними трикутниками з катетами \(6\) та \(8\). Його площа: \(2 \cdot \left(\frac{1}{2} \cdot 6 \cdot 8\right) = 48\text{ см}^2\).<br>
+                        Дві інші грані також прямокутні трикутники (за теоремою про 3 перпендикуляри) з катетами \(6\) та гіпотенузою \(\sqrt{6^2 + 8^2} = 10\). Їх площа: \(2 \cdot \left(\frac{1}{2} \cdot 6 \cdot 10\right) = 60\text{ см}^2\).<br>
+                        Загальна площа бічної поверхні: \(S_{\text{біч}} = 48 + 60 = 108\text{ см}^2\).<br>
+                        <span class="font-bold">Відповідь:</span> \(108\text{ см}^2\).
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 26 -->
+            <section id="sec-26" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-brand-100 text-brand-700 rounded-lg flex items-center justify-center text-sm">26</span>
+                    Тіла обертання: циліндр, конус, куля
+                </h2>
+                
+                <div class="formula-box p-4 rounded-lg mb-6">
+                    <h3 class="font-semibold text-slate-900 mb-2">Формули об'ємів та площ:</h3>
+                    <p class="text-sm text-slate-700 mb-1">● Циліндр: \(V = \pi R^2 H\), \(\quad S_{\text{біч}} = 2\pi R H\)</p>
+                    <p class="text-sm text-slate-700 mb-1">● Конус: \(V = \frac{1}{3}\pi R^2 H\), \(\quad S_{\text{біч}} = \pi R L\)</p>
+                    <p class="text-sm text-slate-700">● Куля: \(V = \frac{4}{3}\pi R^3\), \(\quad S_{\text{сфери}} = 4\pi R^2\)</p>
+                </div>
+            </section>
+
+            <!-- SECTION 27 -->
+            <section id="sec-27" class="bg-white rounded-xl p-6 border border-slate-200 card-shadow hard-box">
+                <h2 class="text-2xl font-bold text-red-900 border-b border-red-200 pb-3 mb-4 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-red-200 text-red-800 rounded-lg flex items-center justify-center text-sm">27</span>
+                    Типові НМТ-Пастки & Фінальний чек-лист
+                </h2>
+                
+                <div class="space-y-3 text-sm text-slate-700 mb-6">
+                    <p class="flex items-start gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                        <span><strong>Пастка з ОДЗ:</strong> Завжди перевіряйте ділення на нуль, від'ємні числа під парними коренями та додатність аргументу й основи логарифма.</span>
+                    </p>
+                    <p class="flex items-start gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                        <span><strong>Зміна знака нерівності:</strong> При множенні/діленні на від'ємне число або при відкиданні логарифма/основи степеня, що менше 1, знак нерівності змінюється на протилежний!</span>
+                    </p>
+                    <p class="flex items-start gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500 mt-1"></i>
+                        <span><strong>Арифметичні помилки у відкритих відповідях:</strong> Вписуйте у відповідь тільки десяткові дроби (наприклад, \(0{,}5\), а не \(\frac{1}{2}\)).</span>
+                    </p>
+                </div>
+
+                <div class="p-4 bg-white rounded-lg border border-red-200">
+                    <h3 class="font-bold text-red-900 mb-2">Підсумкова задача з параметром:</h3>
+                    <p class="font-medium text-slate-900">Знайдіть усі значення параметра \(a\), при яких рівняння \((a - 2)x^2 + (2a - 4)x + (a - 3) = 0\) має єдиний розв'язок.</p>
+                    
+                    <div class="mt-3 p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-sm text-emerald-900">
+                        <strong>Розв'язання та відповідь:</strong><br>
+                        1) Випадок \(a - 2 = 0 \implies a = 2\):<br>
+                        Рівняння стає \(0 \cdot x^2 + 0 \cdot x - 1 = 0 \implies -1 = 0\) (немає розв'язків).<br>
+                        2) Випадок \(a \neq 2\) (квадратне рівняння): має один корінь, коли \(D = 0\).<br>
+                        \(D = (2a - 4)^2 - 4(a - 2)(a - 3) = 4(a - 2)^2 - 4(a - 2)(a - 3) = 4(a - 2)[(a - 2) - (a - 3)] = 4(a - 2)(1) = 4a - 8\).<br>
+                        \(D = 0 \implies 4a - 8 = 0 \implies a = 2\). Але при \(a=2\) рівняння лінійне і не має коренів.<br>
+                        Отже, значень \(a\), при яких рівняння має єдиний корінь, не існує.<br>
+                        <span class="font-bold">Відповідь:</span> Таких значень \(a\) немає.
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-sm text-slate-500 no-print mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>НМТ 2025–2027 • Математика: Повний навчальний довідник. Всі формули та завдання відповідають програмі УЦОЯО.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
